@@ -27,6 +27,6 @@ btn.addEventListener('submit' => {
 })
 .catch((error)=>{
 	setTimeout(()=>{
-		container.innerText = `Oh sorry . You aren't old enough.`
+		container.innerText = `Oh sorry ${input1Value}. You aren't old enough.`
 	},4000)
 })
