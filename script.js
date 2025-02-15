@@ -1,32 +1,42 @@
 //your JS code here. If required.
 
+let form = document.querySelector('form')
+let age = document.getElementById('#age')
+let name = document.getElementById('#name');
+let btn = document.querySelector('btn')
+let container = document.getElementsbyClassName('container')
 
-let form = document.querySelector('form');
-let input1 = document.querySelector('#age');
-let input2 = document.querySelector('#name');
-let btn = document.querySelector('button');
-let container = document.querySelector('container');
+btn.addEventListener("submit" , (e)=>{
+	e.preventDefault();
 
-btn.addEventListener('submit' => {
-	e.preventDafaul();
-	let input1Value = input1.value;
-	let input2Value = input2.value;
+	let ageValue = +(age.value);
+	let nameValue = name.value;
 
-	if(input1Value.length == 0 || input2Value === undefined){
-		alert('Please enter valid details.');
+	if(ageValue == 0 || nameValue.length == 0 ){
+		alert(`Please enter valid details.`)
+		return ;
 	}
 
-	new Promise((resolve,reject) => {
-		let flag = (input1Value > 18)
-		resolve(flag);
+	let flag = (ageValue > 18)
+
+	new Promise((resolve , reject) => {
+		if(flag){
+			resolve(`Welcome, ${nameValue} . You can vote.` )
+		}else{
+			reject(`Oh sorry ${nameValue}. You aren't old enough`);
+		}
+	}).then((reponse) => {
+		setTimeout(()=>{
+			alert(reponse);
+		},4000)
+	}).catch(error => {
+		setTimeout(()=>{
+			alert(error);
+		},4000)
 	})
-}).then((flag)=>{
-	setTimeout(()=> {
-		container.innerText = `Welcome, . You can vote.`
-	},4000)
 })
-.catch((error)=>{
-	setTimeout(()=>{
-		container.innerText = `Oh sorry ${input1Value}. You aren't old enough.`
-	},4000)
-})
+
+
+
+
+
