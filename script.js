@@ -10,16 +10,17 @@ let nameBox = document.getElementById('name');  // Get the name input element by
     let age = ageBox.value;  // Convert age input to number
     let name = nameBox.value;   // Get name value
 
-    // Validate if the inputs are empty
-    if (!age || !name) {
-        alert(`Please enter valid details.`);
-    }
+   
 
 // Add event listener to form submit
 form.addEventListener("submit", (e) => {
     e.preventDefault();  // Prevent default form submission behavior
 
-
+	 // Validate if the inputs are empty
+    if (!age || !name) {
+        alert(`Please enter valid details`);
+    }else{
+		
     // Promise for age check
     new Promise((resolve, reject) => {
         if (age > 18) {
@@ -38,6 +39,8 @@ form.addEventListener("submit", (e) => {
             alert(error);  // Show failure message after 4 seconds
         }, 4000);
     });
+	}
+	
 });
 
 
